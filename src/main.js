@@ -1,5 +1,9 @@
+// import './lib/sign_up.js';
+import { component } from './components/router.js';
+
+// import { login } from './components/router';
+
+const rootDiv = document.querySelector('#root');
 // Este es el punto de entrada de tu aplicacion
 
-import { myFunction } from './lib/index.js';
-
-myFunction();
+rootDiv.appendChild(component());
