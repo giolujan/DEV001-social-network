@@ -1,47 +1,40 @@
-import { onNavigate } from './router.js';
-
-export const signUp = () => {
-  const signUpSection = document.createElement('section');
-  signUpSection.classList.add('signUp-page');
-  signUpSection.innerHTML = `
-    <article class="hu-2">
-        <header>
-            <img class="cat-hu2" src="images/cat-hu2.png" alt="Imagen de un gatito">
-            <h1>Registrar</h1>
-            <button type="button" class="registerGoogle"><img class="icon-Google" src="images/icon-Google.png"
-                    alt="Icono de Google" />Registro con Google</button>
-            <hr width="100%">
-        </header>
-        <main>
-            <form class="page-2">
-                <input type="text" class="nickname" name="nickname" placeholder="Nickname y Apellido" >
-                <input type="date" class="dateBorn" name="dateBorn" placeholder="Fecha de nacimiento/adopción">
-                <input type="email" class="email" name="email" placeholder="Correo electrónico" >
-                <input type="password" class="password" name="password" placeholder="Contraseña" >
-                <input type="password" class="passwordVerified" name="passwordVerified"
-                    placeholder="Verificar Contraseña" >
-                <h3>Al registrarte, aceptas nuestras <a href="" class="go-pageCondition">condiciones</a>, la <a href=""
-                        class="go-pagePoliticPrivacity">Politica de privacidad</a> y la <a href=""
-                        class="go-pagePoliticCookies">Politica de cookies</a></h3>
-            </form>
-        </main>
-    </article>`;
+export const wall = (onNavigate) => {
+  const wallSection = document.createElement('section');
+  wallSection.classList.add('wall-page');
+  wallSection.innerHTML = `
+  <article class="hu-3">
+  <header class="headerHu3">
+      <h1>PetsPerfect</h1>
+      <button class="iconPaw"><i class="fa-solid fa-paw"></i></button>
+      <button class="iconHouse"><i class="fa-solid fa-house"></i></button>
+  </header>
+  <main>
+      <section class="firstPublication">
+          <div class="miniheader">
+              <div class="icon-profile">
+                  <img src="images/icon-perfil.png" alt="Foto de perfil">
+              </div>
+              <p class ="user"><strong>Peluche_12Lopez</strong><br>Perú</br></p>
+              <button class="iconEllipsis"><i class="fa-solid fa-ellipsis"></i></button>
+          </div>
+          <img class="post" src="images/imagen de publicación.webp" alt="Foto de publicación">
+          <div class="iconSet">
+              <button class="iconHeart"><i class="fa-solid fa-heart"></i></button>
+              <button class="iconMessage"><i class="fa-regular fa-message"></i></button>
+          </div>
+          <p><strong>53 me gusta</strong></p>
+          <p><strong>Peluche_12Lopez</strong> ¡Listo para empezar a comer rico y saludable!</p>
+          <p>Ver comentarios</p>
+      </section>
+  </main>
+  <footer class="footerHu3">
+      <button class="iconGear"><i class="fa-solid fa-gear"></i></button>
+      <div class="icon-profile">
+          <img src="images/icon-perfil.png" alt="Foto de perfil">
+      </div>
+  </footer>
+  </article>`;
   // const startSesionBtn = document.createElement('button');
   // signUpSection.appendChild(startSesionBtn);
-  const linkDos = document.createElement('button');
-  linkDos.classList.add('return');
-  linkDos.textContent = 'Volver';
-  signUpSection.append(linkDos);
-  linkDos.addEventListener('click', () => {
-    onNavigate('/');
-  });
-
-  const linktres = document.createElement('button');
-  linktres.classList.add('acept');
-  linktres.textContent = 'Aceptar';
-  signUpSection.append(linktres);
-  linktres.addEventListener('click', () => {
-    onNavigate('/wall');
-  });
-  return signUpSection;
+  return wallSection;
 };

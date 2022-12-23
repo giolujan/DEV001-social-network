@@ -1,6 +1,6 @@
-import { onNavigate } from './router.js';
+import { emailUser } from '../lib/googleLogin.js';
 
-export const login = () => {
+export const login = (onNavigate) => {
   const loginSection = document.createElement('section');
   loginSection.classList.add('login-page');
   loginSection.innerHTML = ` 
@@ -10,25 +10,38 @@ export const login = () => {
       <h1>PetsPerfect</h1>
       <h2>¡Ingresa y deja tus huellitas!</h2>
     </header>
-    <main>
-      <form class="page-1">
+    <main class="page-1">
+      <form id="form-1" class="form-1">
         <input type="email" class="email" name="email" placeholder="Correo electrónico" required >
         <input type="password" class="password" name="password" placeholder="Contraseña" required >
-        <button type= "button" class="startGoogle"><img class="icon-Google" src="images/icon-Google.png" alt="Icono de Google" />Iniciar Sesión con Google</button>
-      </form>      
+        <button type= "submit" class="startSesion">Iniciar Sesión</button>
+      </form> 
+      <hr width="100%">
+      <button type= "button" class="startGoogle"><img class="icon-Google" src="images/icon-Google.png" alt="Icono de Google" />Iniciar Sesión con Google</button>
+      <h3>¿No tienes una cuenta? <a class="link">Regístrate</a></h3>  
     </main>
   </article> 
   `;
 
-  const link = document.createElement('h3');
-  link.classList.add('go-pageRegister');
-  link.textContent = '¿No tienes una cuenta? Regístrate';
-  const btnStart = document.createElement('Button');
-  btnStart.classList.add('startSesion');
-  btnStart.textContent = 'Iniciar Sesión';
-  loginSection.append(link, btnStart);
-  link.addEventListener('click', () => {
+  const loginforms = loginSection.querySelector('.form-1');
+  loginforms.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const email = document.querySelector('.email').value;
+    const password = document.querySelector('.password').value;
+    emailUser(email, password);
+  });
+
+  const linkRegister = loginSection.querySelector('.link');
+  linkRegister.addEventListener('click', () => {
     onNavigate('/signup');
   });
+
+  // const start = loginSection.querySelector('.startSesion');
+  // start.addEventListener('click', (e) => {
+  //   e.preventDefault();
+  //   onNavigate('/wall');
+  // });
+
   return loginSection;
 };
