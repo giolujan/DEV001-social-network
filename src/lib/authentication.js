@@ -4,7 +4,6 @@ const auth = getAuth();
 export const createUser = (email, password) => {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      // Signed in
       console.log(userCredential.user);
       // ...
     })

@@ -31,13 +31,14 @@ export const signUp = (onNavigate) => {
     </article>`;
 
   const createform = signUpSection.querySelector('#page-2');
-  console.log(createform);
+  // console.log(createform);
   createform.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const email = document.querySelector('.email').value;
     const password = document.querySelector('.password').value;
     createUser(email, password);
+    onNavigate('/wall');
   });
   // <img class="cat-hu2" src="images/cat-hu2.png" alt="Imagen de un gatito"></img>
   // const btnAcept = signUpSection.querySelector('.acept');

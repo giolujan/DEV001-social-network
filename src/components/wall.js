@@ -1,3 +1,7 @@
+import {
+  saveTask, getTasks, onGetTasks, deleteTask, getTask, updateTask,
+} from '../lib/firebase.js';
+
 export const wall = (onNavigate) => {
   const wallSection = document.createElement('section');
   wallSection.classList.add('wall-page');
@@ -23,8 +27,12 @@ export const wall = (onNavigate) => {
               <button class="iconMessage"><i class="fa-regular fa-message"></i></button>
           </div>
           <p><strong>53 me gusta</strong></p>
-          <p><strong>Peluche_12Lopez</strong> ¡Listo para empezar a comer rico y saludable!</p>
-          <p>Ver comentarios</p>
+          <form id="comment" class="comment">
+          <strong>Peluche_12Lopez</strong><input type="text" placeholder="¡Listo para empezar a comer rico y saludable!" id="commentTitle">
+          <textarea id="commentDescription" rows="3" placeholder="Ver comentarios"></textarea>
+          <button type= "submit" class="send">Publicar</button>
+          </form>
+          <div id="taskContainer"></div>
       </section>
   </main>
   <footer class="footerHu3">
@@ -34,6 +42,59 @@ export const wall = (onNavigate) => {
       </div>
   </footer>
   </article>`;
+  const taskContainer = wallSection.querySelector('#taskContainer');
+  let editTask = false;
+  let id = '';
+
+  window.addEventListener('DOMContentLoaded', async () => {
+    onGetTasks((querySnapshot) => {
+      let commentext = '';
+      querySnapshot.forEach((doc) => {
+        const task = doc.data();
+        commentext += `
+      <div class= "containerComment">
+      <p><a>${task.title}</a> ${task.description}<p>
+      <button class="btn-delete" data-id="${doc.id}">Delete</button>
+      <button class="btn-edit" data-id="${doc.id}">Edit</button>
+      <hr width="100%">
+      </div>`;
+      });
+      taskContainer.innerHTML = commentext;
+      const btnsDelete = taskContainer.querySelectorAll('.btn-delete');
+      btnsDelete.forEach((btn) => {
+        btn.addEventListener('click', ({ target: { dataset } }) => {
+          deleteTask(dataset.id);
+        });
+      });
+      const btnsEdit = taskContainer.querySelectorAll('.btn-edit');
+      btnsEdit.forEach((btn) => {
+        btn.addEventListener('click', async (e) => {
+          const doc = await getTask(e.target.dataset.id);
+          const task = doc.data();
+          comment.commentTitle.value = task.title;
+          comment.commentDescription.value = task.description;
+          editTask = true;
+          id = e.target.dataset.id;
+        });
+      });
+    });
+  });
+  const comment = wallSection.querySelector('.comment');
+  comment.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const title = comment.commentTitle;
+    const description = comment.commentDescription;
+    if (!editTask) {
+      saveTask(title.value, description.value);
+    } else {
+      updateTask(id, {
+        title: title.value,
+        description: description.value,
+      });
+      editTask = false;
+    }
+    comment.reset();
+  });
   // const startSesionBtn = document.createElement('button');
   // signUpSection.appendChild(startSesionBtn);
   return wallSection;

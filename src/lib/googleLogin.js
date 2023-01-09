@@ -4,10 +4,9 @@ const auth = getAuth();
 export const emailUser = (email, password) => {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      // Signed in
       console.log(userCredential.user);
-      // ...
     })
+
     .catch((error) => {
       console.log(error);
       if (error.code === 'auth/user-not-found') {
