@@ -20,8 +20,8 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 const db = getFirestore(app);
-export const saveTask = (title, description) => addDoc(collection(db, 'tasks'), { title, description });
-export const getTasks = () => getDocs(collection(db, 'tasks'));
+export const saveTask = (description) => addDoc(collection(db, 'tasks'), { description });
+// export const getTasks = () => getDocs(collection(db, 'tasks'));
 export const onGetTasks = (callback) => onSnapshot(collection(db, 'tasks'), callback);
 export const deleteTask = (id) => deleteDoc(doc(db, 'tasks', id));
 export const getTask = (id) => getDoc(doc(db, 'tasks', id));

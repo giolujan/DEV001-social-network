@@ -1,5 +1,5 @@
 import { login } from './login.js';
-import { signUp } from './signup.js';
+import { register } from './register.js';
 import { wall } from './wall.js';
 
 const rootDiv = document.querySelector('#root');
@@ -16,7 +16,7 @@ const onNavigate = (pathname) => {
 
 routes = {
   '/': login(onNavigate),
-  '/signup': signUp(onNavigate),
+  '/signup': register(onNavigate),
   '/wall': wall(onNavigate),
 };
 

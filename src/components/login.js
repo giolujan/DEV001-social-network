@@ -1,4 +1,4 @@
-import { emailUser } from '../lib/googleLogin.js';
+import { emailUser } from '../lib/userLogin.js';
 
 export const login = (onNavigate) => {
   const loginSection = document.createElement('section');
@@ -29,19 +29,13 @@ export const login = (onNavigate) => {
 
     const email = document.querySelector('.email').value;
     const password = document.querySelector('.password').value;
-    emailUser(email, password);
+    emailUser(email, password, onNavigate);
   });
 
   const linkRegister = loginSection.querySelector('.link');
   linkRegister.addEventListener('click', () => {
     onNavigate('/signup');
   });
-
-  // const start = loginSection.querySelector('.startSesion');
-  // start.addEventListener('click', (e) => {
-  //   e.preventDefault();
-  //   onNavigate('/wall');
-  // });
 
   return loginSection;
 };

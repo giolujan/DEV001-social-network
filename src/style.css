@@ -102,13 +102,13 @@ i {
     margin-bottom: 3rem;
 }
 
-.nickname, .dateBorn, .passwordVerified, .email, .password {
+.nickname, .dateBorn, .passwordVerified, .email, .password, .commentDescription {
     padding: 12px;
     border-radius: 7px;
     border-width: 1px;
 }
 
-.nickname, .dateBorn, .passwordVerified, .email, .password {
+.nickname, .dateBorn, .passwordVerified, .email, .password, .commentDescription {
     width: 70%;
     background-color: white;
     font-size: 1.4rem;
@@ -133,7 +133,7 @@ h3 {
     cursor: pointer;
 }
 
-.registerGoogle, .acept, .startGoogle, .startSesion, .return  {
+.registerGoogle, .acept, .startGoogle, .startSesion, .return, .send  {
     padding: 12px;
     font-size: 1.6rem;
     font-weight: bold;
@@ -215,8 +215,36 @@ a {
     font-weight: bold;
 }
 
-.conteinerComment {
-    padding: 10px;
+.comment {
+    display: flex;
+    justify-content: space-between;
+}
+.containerComment {
+    margin: 20px 0px;
+}
+
+.containerComment p {
+    margin: 10px 0px;
+}
+
+.containerBtn {
+    display: flex;
+    justify-content: end;
+    margin: 0px 0px 10px 0px;
+}
+
+.btn-delete, .btn-edit  {
+    border: none;
+    outline:none;
+    background: none;
+    margin: 5px;
+ /* padding: 8px; */
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: orange;
+ /* border-radius: 20px;
+    border-width: 1px; */
+    cursor: pointer;
 }
 
 @media (min-width: 768px) {

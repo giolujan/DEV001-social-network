@@ -1,6 +1,6 @@
 import { createUser } from '../lib/authentication.js';
 
-export const signUp = (onNavigate) => {
+export const register = (onNavigate) => {
   const signUpSection = document.createElement('section');
   signUpSection.classList.add('signUp-page');
   signUpSection.innerHTML = `
@@ -37,8 +37,8 @@ export const signUp = (onNavigate) => {
 
     const email = document.querySelector('.email').value;
     const password = document.querySelector('.password').value;
-    createUser(email, password);
-    onNavigate('/wall');
+    const nickname = document.querySelector('.nickname').value;
+    createUser(email, password, nickname, onNavigate);
   });
   // <img class="cat-hu2" src="images/cat-hu2.png" alt="Imagen de un gatito"></img>
   // const btnAcept = signUpSection.querySelector('.acept');
