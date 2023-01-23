@@ -9,25 +9,13 @@ export const wall = (onNavigate) => {
   <article class="hu-3">
   <header class="headerHu3">
       <h1>PetsPerfect</h1>
-      <button class="iconPaw"><i class="fa-solid fa-paw"></i></button>
       <button class="iconHouse"><i class="fa-solid fa-house"></i></button>
   </header>
   <main>
       <section class="firstPublication">
-          <div class="miniheader">
-              <div class="icon-profile">
-                  <img src="images/icon-perfil.png" alt="Foto de perfil">
-              </div>
-              <p class ="user"><strong>Peluche_12Lopez</strong><br>Perú</br></p>
-          </div>
-          <img class="post" src="images/imagen de publicación.webp" alt="Foto de publicación">
-          <div class="iconSet">
-              <button class="iconHeart"><i class="fa-solid fa-heart"></i></button>
-          </div>
-          <p><strong>53 me gusta</strong></p>
           <form id="comment" class="comment">
-          <input id="commentDescription" class="commentDescription" placeholder="Escribe lo que piensas"></input>
-          <button type= "submit" class="send" id="send" >Publicar</button>
+            <input id="commentDescription" class="commentDescription" placeholder="Escribe lo que piensas"></input>
+            <button type= "submit" class="send" id="send" >Publicar</button>
           </form>
           <div id="taskContainer"></div>
       </section>
@@ -45,12 +33,17 @@ export const wall = (onNavigate) => {
         const task = doc.data();
         commentext += `
       <div class= "containerComment">
-      <p>${task.description}<p>
-      <div class= "containerBtn">
-      <button class="btn-delete" data-id="${doc.id}">Delete</button>
-      <button class="btn-edit" data-id="${doc.id}">Edit</button>
-      </div>
-      <hr width="100%">
+        <div class="miniheader">
+          <div class="icon-profile">
+            <img src="images/icon-perfil.png" alt="Foto de perfil">
+          </div>
+          <p class ="user"><strong>Peluche_12Lopez</strong><br>Perú</br></p>
+        </div>
+        <p class ="textcoment">${task.description}<p>
+        <div class= "containerBtn">
+          <button class="btn-delete" data-id="${doc.id}">Delete</button>
+          <button class="btn-edit" data-id="${doc.id}">Edit</button>
+        </div>
       </div>`;
       });
       taskContainer.innerHTML = commentext;
@@ -93,8 +86,19 @@ export const wall = (onNavigate) => {
   linkLogin.addEventListener('click', () => {
     onNavigate('/');
   });
-
-  // const startSesionBtn = document.createElement('button');
-  // signUpSection.appendChild(startSesionBtn);
   return wallSection;
 };
+
+// const startSesionBtn = document.createElement('button');
+// signUpSection.appendChild(startSesionBtn);
+// <div class="miniheader">
+// <div class="icon-profile">
+// <img src="images/icon-perfil.png" alt="Foto de perfil">
+// </div>
+// <p class ="user"><strong>Peluche_12Lopez</strong><br>Perú</br></p>
+// </div>
+// <img class="post" src="images/imagen de publicación.webp" alt="Foto de publicación">
+// <div class="iconSet">
+// <button class="iconHeart"><i class="fa-solid fa-heart"></i></button>
+// </div>
+// <p><strong>53 me gusta</strong></p>

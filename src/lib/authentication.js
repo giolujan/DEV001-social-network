@@ -2,7 +2,7 @@ import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase
 
 const auth = getAuth();
 // const user = auth.currentUser;
-export const currentUserInfo = () => auth.currentUser;
+// export const currentUserInfo = () => auth.currentUser;
 export const createUser = (email, password, nickname, onNavigate) => {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {

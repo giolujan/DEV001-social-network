@@ -106,9 +106,6 @@ i {
     padding: 12px;
     border-radius: 7px;
     border-width: 1px;
-}
-
-.nickname, .dateBorn, .passwordVerified, .email, .password, .commentDescription {
     width: 70%;
     background-color: white;
     font-size: 1.4rem;
@@ -150,21 +147,6 @@ h3 {
     display: none;
 }
 
-.icon-profile {
-    display: inline-block;
-    position: relative;
-    width: 70px;
-    height: 70px;
-    overflow: hidden;
-    border-radius: 50%; 
-}
-
-.icon-profile img {
-    width: auto;
-    height: 100%;
-    margin-left: -20px;
-}
-
 .post {
     width: 100%;
     padding: 10px 0px;
@@ -183,21 +165,9 @@ h3 {
     justify-content: space-between;
 }
 
-.miniheader {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-}
-
 .iconEllipsis {
     position: relative;
     left: 145px;
-}
-
-.user {
-    position: relative;
-    left: 10px;
 }
 
 p {
@@ -216,21 +186,57 @@ a {
 }
 
 .comment {
+    margin: 15px 0px;
     display: flex;
     justify-content: space-between;
 }
 .containerComment {
     margin: 20px 0px;
+    border: 1px solid orange;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
-.containerComment p {
-    margin: 10px 0px;
+.miniheader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: orange;
+    width: 300px;
+    height: 60px;
+    padding: 10px 10px;
+}
+
+.icon-profile {
+    display: inline-block;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 50%; 
+}
+
+.icon-profile img {
+    width: auto;
+    height: 100%;
+    margin-left: -15px;
+}
+
+.user {
+    position: relative;
+    left: 10px;
+    color: white;
+}
+
+.textcoment {
+    margin: 10px 10px;
 }
 
 .containerBtn {
     display: flex;
     justify-content: end;
-    margin: 0px 0px 10px 0px;
+    margin: 0px 10px 10px 0px;
 }
 
 .btn-delete, .btn-edit  {
@@ -266,5 +272,3 @@ a {
         height: auto;
     }
 }
-
-@media (min-width: 1300px) {}
